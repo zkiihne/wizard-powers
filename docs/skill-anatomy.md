@@ -1,5 +1,7 @@
 # Wizard Power Skill Anatomy
 
+**This is the Phase 3 deliverable.** See `development-process.md` for the full lifecycle.
+
 A framework for speccing out any wizard power and grading its readiness for a Claude skill.
 
 ---
