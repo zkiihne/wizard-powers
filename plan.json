@@ -1,0 +1,61 @@
+{
+  "project": "wizard-powers",
+  "updated": "2026-06-06",
+  "phases": [
+    {
+      "name": "Research",
+      "status": "complete",
+      "steps": [
+        {
+          "id": "research-landscape",
+          "title": "Map all real-world API categories",
+          "status": "complete",
+          "output": "docs/research-landscape.md — 18 categories across 3 tiers",
+          "commit": "8bf92ef"
+        }
+      ]
+    },
+    {
+      "name": "Physical Mail",
+      "status": "in_progress",
+      "steps": [
+        {
+          "id": "mail-templates",
+          "title": "Build HTML templates for 5 mail actions",
+          "status": "complete",
+          "output": "mail/templates/ — demand-letter, legal-notice, postcard-front/back, invoice-letter, cease-desist"
+        },
+        {
+          "id": "mail-skill",
+          "title": "Create mail wizard skill",
+          "status": "complete",
+          "output": "~/.claude/skills/mail.md"
+        },
+        {
+          "id": "lob-mcp-wiring",
+          "title": "Wire lob-mcp into Claude Code",
+          "status": "pending",
+          "blocker": "Needs Lob API keys (sign up at lob.com, free)"
+        },
+        {
+          "id": "mail-test",
+          "title": "Test all 5 actions in test mode (no real mail)",
+          "status": "pending",
+          "depends_on": "lob-mcp-wiring"
+        }
+      ]
+    },
+    {
+      "name": "Next Integration (TBD)",
+      "status": "pending",
+      "steps": [
+        {
+          "id": "pick-next",
+          "title": "Choose next wizard power to build",
+          "status": "pending",
+          "candidates": ["LLC formation (FileForms)", "E-signature (Dropbox Sign)", "ACH payments (Increase)", "Shipping labels (EasyPost)"]
+        }
+      ]
+    }
+  ]
+}
