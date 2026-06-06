@@ -72,12 +72,48 @@
     {
       "name": "Next Integration (TBD)",
       "status": "pending",
+      "note": "Use standard 8-step process from CLAUDE.md when starting any new power",
       "steps": [
         {
           "id": "pick-next",
           "title": "Choose next wizard power to build",
           "status": "pending",
           "candidates": ["LLC formation (FileForms)", "E-signature (Dropbox Sign)", "ACH payments (Increase)", "Shipping labels (EasyPost)"]
+        },
+        {
+          "id": "research",
+          "title": "Find MCP server, read README, list exact tool names",
+          "status": "pending"
+        },
+        {
+          "id": "wire-mcp",
+          "title": "Add MCP server, restart, verify connected",
+          "status": "pending"
+        },
+        {
+          "id": "define-tests",
+          "title": "Write atomic test plan with pass/fail criteria before touching skill",
+          "status": "pending"
+        },
+        {
+          "id": "run-tests",
+          "title": "Execute all tests — validate, preview, commit → status:processed",
+          "status": "pending"
+        },
+        {
+          "id": "write-skill",
+          "title": "Write skill using verified tool names and required fields only",
+          "status": "pending"
+        },
+        {
+          "id": "sync-skill",
+          "title": "Copy skill to claude-config, commit both repos",
+          "status": "pending"
+        },
+        {
+          "id": "mark-complete",
+          "title": "Verify all 5 completion criteria from CLAUDE.md checklist",
+          "status": "pending"
         }
       ]
     }
