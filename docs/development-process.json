@@ -75,11 +75,56 @@
   },
   "state_tracker": {
     "powers": [
-      { "name": "Physical mail", "slug": "physical-mail", "phases_complete": [] },
-      { "name": "LLC formation", "slug": "llc-formation", "phases_complete": [] },
-      { "name": "E-signature", "slug": "e-signature", "phases_complete": [] },
-      { "name": "ACH payment", "slug": "ach-payment", "phases_complete": [] },
-      { "name": "KYC/identity", "slug": "kyc-identity", "phases_complete": [] }
+      {
+        "name": "Physical mail",
+        "slug": "physical-mail",
+        "phases": [
+          { "id": 1, "name": "Research", "status": "not_started", "artifact": "powers/physical-mail/research.md", "notes": null, "completed_at": null },
+          { "id": 2, "name": "Prototype", "status": "not_started", "artifacts": ["powers/physical-mail/prototype.py", "powers/physical-mail/prototype-log.md"], "notes": null, "completed_at": null },
+          { "id": 3, "name": "Write the Skill", "status": "not_started", "artifact": "powers/physical-mail/skill.md", "notes": null, "completed_at": null },
+          { "id": 4, "name": "Test the Skill", "status": "not_started", "artifact": "powers/physical-mail/test-log.md", "notes": null, "completed_at": null }
+        ]
+      },
+      {
+        "name": "LLC formation",
+        "slug": "llc-formation",
+        "phases": [
+          { "id": 1, "name": "Research", "status": "not_started", "artifact": "powers/llc-formation/research.md", "notes": null, "completed_at": null },
+          { "id": 2, "name": "Prototype", "status": "not_started", "artifacts": ["powers/llc-formation/prototype.py", "powers/llc-formation/prototype-log.md"], "notes": null, "completed_at": null },
+          { "id": 3, "name": "Write the Skill", "status": "not_started", "artifact": "powers/llc-formation/skill.md", "notes": null, "completed_at": null },
+          { "id": 4, "name": "Test the Skill", "status": "not_started", "artifact": "powers/llc-formation/test-log.md", "notes": null, "completed_at": null }
+        ]
+      },
+      {
+        "name": "E-signature",
+        "slug": "e-signature",
+        "phases": [
+          { "id": 1, "name": "Research", "status": "not_started", "artifact": "powers/e-signature/research.md", "notes": null, "completed_at": null },
+          { "id": 2, "name": "Prototype", "status": "not_started", "artifacts": ["powers/e-signature/prototype.py", "powers/e-signature/prototype-log.md"], "notes": null, "completed_at": null },
+          { "id": 3, "name": "Write the Skill", "status": "not_started", "artifact": "powers/e-signature/skill.md", "notes": null, "completed_at": null },
+          { "id": 4, "name": "Test the Skill", "status": "not_started", "artifact": "powers/e-signature/test-log.md", "notes": null, "completed_at": null }
+        ]
+      },
+      {
+        "name": "ACH payment",
+        "slug": "ach-payment",
+        "phases": [
+          { "id": 1, "name": "Research", "status": "not_started", "artifact": "powers/ach-payment/research.md", "notes": null, "completed_at": null },
+          { "id": 2, "name": "Prototype", "status": "not_started", "artifacts": ["powers/ach-payment/prototype.py", "powers/ach-payment/prototype-log.md"], "notes": null, "completed_at": null },
+          { "id": 3, "name": "Write the Skill", "status": "not_started", "artifact": "powers/ach-payment/skill.md", "notes": null, "completed_at": null },
+          { "id": 4, "name": "Test the Skill", "status": "not_started", "artifact": "powers/ach-payment/test-log.md", "notes": null, "completed_at": null }
+        ]
+      },
+      {
+        "name": "KYC/identity",
+        "slug": "kyc-identity",
+        "phases": [
+          { "id": 1, "name": "Research", "status": "not_started", "artifact": "powers/kyc-identity/research.md", "notes": null, "completed_at": null },
+          { "id": 2, "name": "Prototype", "status": "not_started", "artifacts": ["powers/kyc-identity/prototype.py", "powers/kyc-identity/prototype-log.md"], "notes": null, "completed_at": null },
+          { "id": 3, "name": "Write the Skill", "status": "not_started", "artifact": "powers/kyc-identity/skill.md", "notes": null, "completed_at": null },
+          { "id": 4, "name": "Test the Skill", "status": "not_started", "artifact": "powers/kyc-identity/test-log.md", "notes": null, "completed_at": null }
+        ]
+      }
     ]
   }
 }
