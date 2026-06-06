@@ -1,6 +1,6 @@
 {
   "project": "wizard-powers",
-  "updated": "2026-06-06",
+  "updated": "2026-06-06T13:38",
   "phases": [
     {
       "name": "Research",
@@ -17,7 +17,7 @@
     },
     {
       "name": "Physical Mail",
-      "status": "in_progress",
+      "status": "complete",
       "provider": "Lob (via lob-mcp)",
       "requirements": [
         {
@@ -63,9 +63,9 @@
         },
         {
           "id": "mail-test",
-          "title": "Test address validation + letter preview in test mode",
-          "status": "next",
-          "note": "Resume here after session restart — verify claude mcp list shows lob, then test lob_us_verifications_verify"
+          "title": "Test full flow: address validation, letter preview+commit, postcard preview+commit",
+          "status": "complete",
+          "note": "Verified 2026-06-06 — all 5 steps pass in test mode. Key gotcha: use_type is required on every piece ('operational' for letters, 'marketing' for postcards); commit payload must exactly match preview payload for token acceptance in live mode."
         }
       ]
     },

@@ -19,12 +19,17 @@ address validation → preview (proof PDF + confirmation token) → commit.
 
 | Requirement | Status | How to Unblock |
 |-------------|--------|----------------|
-| Lob account | **NEEDED** | Sign up free at lob.com (no credit card) |
-| `LOB_TEST_API_KEY` | **NEEDED** | lob.com → Dashboard → Settings → API Keys → `test_...` key |
+| Lob account | ✅ Done | Sign up free at lob.com (no credit card) |
+| `LOB_TEST_API_KEY` | ✅ Done | lob.com → Dashboard → Settings → API Keys → `test_...` key |
+| lob-mcp wired | ✅ Done | `claude mcp add lob ...` — see Setup below |
 | `LOB_LIVE_API_KEY` | Optional | Same location — `live_...` key. Only needed for real sends |
-| npx in PATH | Assumed OK | Ships with Node.js — verify: `npx --version` |
+| npx in PATH | ✅ OK | Ships with Node.js |
 
-Nothing works until `LOB_TEST_API_KEY` is set. Test mode is free and sends no real mail.
+## Known Gotchas
+
+- `use_type` is required on every mail piece (`"operational"` for letters/invoices, `"marketing"` for postcards/outreach) — no default is set on the account
+- Proof PDF URL is `null` in test mode (layout is still validated)
+- Commit payload must exactly match preview payload for the confirmation token to be accepted in live mode
 
 ## Setup
 
