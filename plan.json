@@ -24,13 +24,13 @@
           "id": "lob-account",
           "description": "Free Lob account",
           "how": "Sign up at lob.com — no credit card required for test mode",
-          "status": "pending"
+          "status": "complete"
         },
         {
           "id": "lob-test-key",
           "description": "LOB_TEST_API_KEY",
           "how": "lob.com → Dashboard → Settings → API Keys → copy test_... key",
-          "status": "pending",
+          "status": "complete",
           "blocks": ["lob-mcp-wiring"]
         },
         {
@@ -57,15 +57,15 @@
         {
           "id": "lob-mcp-wiring",
           "title": "Wire lob-mcp into Claude Code",
-          "status": "pending",
-          "blocked_by": ["lob-test-key"],
-          "command": "claude mcp add lob --env LOB_TEST_API_KEY=test_... --env LOB_LIVE_MODE=false --env LOB_MAX_PIECES_PER_RUN=10 -- npx -y lob-mcp"
+          "status": "complete",
+          "command": "claude mcp add lob --env LOB_TEST_API_KEY=test_... --env LOB_LIVE_MODE=false --env LOB_MAX_PIECES_PER_RUN=10 -- npx -y lob-mcp",
+          "note": "Key set by user — restart required to load server"
         },
         {
           "id": "mail-test",
           "title": "Test address validation + letter preview in test mode",
-          "status": "pending",
-          "blocked_by": ["lob-mcp-wiring"]
+          "status": "next",
+          "note": "Resume here after session restart — verify claude mcp list shows lob, then test lob_us_verifications_verify"
         }
       ]
     },
