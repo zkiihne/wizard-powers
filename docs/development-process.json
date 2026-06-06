@@ -1,0 +1,85 @@
+{
+  "title": "Wizard Power Development Process",
+  "rule": "Four phases per wizard power, in order. Never skip ahead.",
+  "phases": [
+    {
+      "id": 1,
+      "name": "Research",
+      "goal": "Understand the full landscape before writing a single line.",
+      "deliverable": "research.md",
+      "checklist": [
+        "All viable providers — not just the obvious ones",
+        "Pricing model (per-use, subscription, tiered)",
+        "Sandbox / test environment availability",
+        "API maturity (stable vs beta, rate limits, uptime SLA)",
+        "Auth model (API key, OAuth, webhook, etc.)",
+        "Reversibility window — is there one? How long?",
+        "ToS restrictions (what's prohibited, what requires KYC/verification)",
+        "Compliance surface (legal, regulatory, fraud risk)",
+        "Real-world edge cases (what breaks in practice, not just in docs)",
+        "Existing MCP servers or Claude integrations (don't rebuild what exists)"
+      ],
+      "done_when": "You can answer any question about the power without opening a browser."
+    },
+    {
+      "id": 2,
+      "name": "Prototype",
+      "goal": "Prove that the action can actually be taken end-to-end in a real environment.",
+      "deliverables": ["prototype.py", "prototype-log.md"],
+      "checklist": [
+        "Authenticate with the chosen provider",
+        "Execute the core action against the sandbox",
+        "Parse and print the response (confirmation ID, status, etc.)",
+        "Trigger at least one failure mode and confirm the error is readable"
+      ],
+      "done_when": "Script has been run and output logged, including one error case."
+    },
+    {
+      "id": 3,
+      "name": "Write the Skill",
+      "goal": "Turn the prototype into a production-ready Claude skill.",
+      "deliverable": "skill.md",
+      "checklist": [
+        "Fill out all 8 dimensions using skill-anatomy.md template",
+        "Score 8/8 before moving to Phase 4",
+        "Wire the prototype's API logic into the skill's execution step",
+        "Define the confirmation gate copy exactly as it will appear to the user",
+        "Define the receipt format exactly as it will appear"
+      ],
+      "done_when": "Score is 8/8 and skill file is committed."
+    },
+    {
+      "id": 4,
+      "name": "Test the Skill",
+      "goal": "Confirm the skill behaves correctly when invoked naturally.",
+      "deliverable": "test-log.md",
+      "checklist": [
+        "Happy path — trigger with natural language, confirm action completes",
+        "Each failure mode from Phase 3 — trigger error condition, confirm message is clear",
+        "Cancellation path — if reversible, test cancel command within the window",
+        "Edge inputs — missing required fields, malformed addresses, etc.",
+        "Receipt format — confirm output is readable and contains everything needed to follow up"
+      ],
+      "done_when": "All failure modes hit at least once, happy path confirmed, no surprises."
+    }
+  ],
+  "folder_structure": {
+    "pattern": "powers/{power-slug}/",
+    "files": {
+      "research.md": "Phase 1 deliverable",
+      "prototype.py": "Phase 2 deliverable — working sandbox script",
+      "prototype-log.md": "Phase 2 deliverable — actual run output proving it executed",
+      "skill.md": "Phase 3 deliverable — 8/8 skill spec",
+      "test-log.md": "Phase 4 deliverable — test results"
+    }
+  },
+  "state_tracker": {
+    "powers": [
+      { "name": "Physical mail", "slug": "physical-mail", "phases_complete": [] },
+      { "name": "LLC formation", "slug": "llc-formation", "phases_complete": [] },
+      { "name": "E-signature", "slug": "e-signature", "phases_complete": [] },
+      { "name": "ACH payment", "slug": "ach-payment", "phases_complete": [] },
+      { "name": "KYC/identity", "slug": "kyc-identity", "phases_complete": [] }
+    ]
+  }
+}
