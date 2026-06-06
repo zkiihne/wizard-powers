@@ -18,13 +18,36 @@
     {
       "name": "Physical Mail",
       "status": "in_progress",
-      "steps": [
+      "provider": "Lob (via lob-mcp)",
+      "requirements": [
         {
-          "id": "mail-templates",
-          "title": "Build HTML templates for 5 mail actions",
-          "status": "complete",
-          "output": "mail/templates/ — demand-letter, legal-notice, postcard-front/back, invoice-letter, cease-desist"
+          "id": "lob-account",
+          "description": "Free Lob account",
+          "how": "Sign up at lob.com — no credit card required for test mode",
+          "status": "pending"
         },
+        {
+          "id": "lob-test-key",
+          "description": "LOB_TEST_API_KEY",
+          "how": "lob.com → Dashboard → Settings → API Keys → copy test_... key",
+          "status": "pending",
+          "blocks": ["lob-mcp-wiring"]
+        },
+        {
+          "id": "lob-live-key",
+          "description": "LOB_LIVE_API_KEY (optional — only needed for real sends)",
+          "how": "Same location — copy live_... key. Only required when LOB_LIVE_MODE=true",
+          "status": "pending",
+          "blocks": ["real-mail-sends"]
+        },
+        {
+          "id": "npx-available",
+          "description": "npx available in PATH",
+          "how": "Comes with Node.js — check: npx --version",
+          "status": "assumed_ok"
+        }
+      ],
+      "steps": [
         {
           "id": "mail-skill",
           "title": "Create mail wizard skill",
@@ -35,13 +58,14 @@
           "id": "lob-mcp-wiring",
           "title": "Wire lob-mcp into Claude Code",
           "status": "pending",
-          "blocker": "Needs Lob API keys (sign up at lob.com, free)"
+          "blocked_by": ["lob-test-key"],
+          "command": "claude mcp add lob --env LOB_TEST_API_KEY=test_... --env LOB_LIVE_MODE=false --env LOB_MAX_PIECES_PER_RUN=10 -- npx -y lob-mcp"
         },
         {
           "id": "mail-test",
-          "title": "Test all 5 actions in test mode (no real mail)",
+          "title": "Test address validation + letter preview in test mode",
           "status": "pending",
-          "depends_on": "lob-mcp-wiring"
+          "blocked_by": ["lob-mcp-wiring"]
         }
       ]
     },
