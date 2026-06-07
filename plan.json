@@ -70,6 +70,52 @@
       ]
     },
     {
+      "name": "LLC Formation",
+      "status": "complete",
+      "provider": "Lovie (via lovie-formation MCP)",
+      "requirements": [
+        {
+          "id": "lovie-account",
+          "description": "Free Lovie account",
+          "how": "Sign up at https://lovie-web.vercel.app/dashboard",
+          "status": "needed"
+        },
+        {
+          "id": "browser-auth",
+          "description": "One-time browser login per MCP process to get token + userId",
+          "how": "formation_login opens browser; copy token (eyJ...) and userId (user_...) from dashboard; call formation_set_token with both",
+          "status": "needed"
+        },
+        {
+          "id": "lovie-mcp-wired",
+          "description": "lovie-formation MCP server in Claude Code at user scope",
+          "how": "claude mcp add --scope user lovie-formation npx @lovie-ai/formation-mcp-server@latest",
+          "status": "complete"
+        }
+      ],
+      "steps": [
+        {
+          "id": "llc-skill",
+          "title": "Create LLC formation wizard skill",
+          "status": "complete",
+          "output": "~/.claude/skills/llc-formation/SKILL.md"
+        },
+        {
+          "id": "lovie-mcp-wiring",
+          "title": "Wire lovie-formation MCP into Claude Code at user scope",
+          "status": "complete",
+          "command": "claude mcp add --scope user lovie-formation npx @lovie-ai/formation-mcp-server@latest"
+        },
+        {
+          "id": "schema-discovery",
+          "title": "Discover exact tool schemas via static analysis of MCP source",
+          "status": "complete",
+          "output": "docs/tool-schemas.md — 24 tools with full field schemas and response shapes",
+          "note": "Live testing skipped (browser auth not viable on headless Mac Mini). Key gotchas discovered: formation_set_token requires both token AND userId; formation_check_name takes sessionId only (not a name string); formation_describe_business is a required step before formation_set_state; formation_set_company_address is required; auth is in-memory per MCP process; certificate URL expires in 60 minutes."
+        }
+      ]
+    },
+    {
       "name": "Next Integration (TBD)",
       "status": "pending",
       "note": "Use standard 8-step process from CLAUDE.md when starting any new power",
@@ -78,7 +124,7 @@
           "id": "pick-next",
           "title": "Choose next wizard power to build",
           "status": "pending",
-          "candidates": ["LLC formation (FileForms)", "E-signature (Dropbox Sign)", "ACH payments (Increase)", "Shipping labels (EasyPost)"]
+          "candidates": ["E-signature (Dropbox Sign / sign-cli)", "ACH payments (Increase)", "Shipping labels (EasyPost)", "Remote notarization (Notarize / Pactima)"]
         },
         {
           "id": "research",
